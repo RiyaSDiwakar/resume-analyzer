@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Results</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Your Resume Results</h1>
+        <p>Here's how your resume performed!</p>
+
+        <!-- ATS Score -->
+        <div class="section">
+            <div class="score-card">
+                <p style="color:#666; margin-bottom:4px;">ATS Score</p>
+                <div class="score-number">{{ results.ats_score }}<span style="font-size:24px">/100</span></div>
+            </div>
+        </div>
+
+        <!-- JD Match -->
+        <div class="section">
+            <div class="score-card">
+                <p style="color:#666; margin-bottom:4px;">Job Description Match</p>
+                <div class="score-number">{{ results.jd_match }}<span style="font-size:24px">%</span></div>
+            </div>
+        </div>
+
+        <!-- Skills Found -->
+        <div class="section">
+            <h3>✅ Skills Found in Your Resume</h3>
+            <div class="skills-list">
+                {% for skill in results.found_skills %}
+                <span class="skill-tag found">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Skills Missing -->
+        <div class="section">
+            <h3>❌ Skills Missing from Your Resume</h3>
+            <div class="skills-list">
+                {% for skill in results.missing_skills %}
+                <span class="skill-tag missing">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Back button -->
+        <a href="/">
+            <button type="button">← Analyze Another Resume</button>
+        </a>
+    </div>
+</body>
+</html>
