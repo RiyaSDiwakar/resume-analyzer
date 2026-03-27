@@ -26,6 +26,31 @@
             </div>
         </div>
 
+        <!-- Section Detector -->
+        <div class="section">
+            <h3>📋 Resume Sections</h3>
+            <p style="color:#666; margin-bottom:12px;">Recruiters and ATS systems look for these sections.</p>
+
+            <h4 style="color:#166534; margin-bottom:8px;">✅ Sections Found</h4>
+            <div class="skills-list">
+                {% for section in results.found_sections %}
+                <span class="skill-tag found">{{ section }}</span>
+                {% endfor %}
+            </div>
+
+            {% if results.missing_sections %}
+            <h4 style="color:#991b1b; margin-top:16px; margin-bottom:8px;">❌ Sections Missing</h4>
+            <div class="skills-list">
+                {% for section in results.missing_sections %}
+                <span class="skill-tag missing">{{ section }}</span>
+                {% endfor %}
+            </div>
+            <p style="color:#666; margin-top:12px; font-size:14px;">
+                💡 Tip: Adding missing sections can significantly improve your ATS score!
+            </p>
+            {% endif %}
+        </div>
+
         <!-- Skills Found -->
         <div class="section">
             <h3>✅ Skills Found in Your Resume</h3>
@@ -47,9 +72,7 @@
         </div>
 
         <!-- Back button -->
-        <a href="/">
-            <button type="button">← Analyze Another Resume</button>
-        </a>
+        <a href="/"><button type="button">← Analyze Another Resume</button></a>
     </div>
 </body>
 </html>
